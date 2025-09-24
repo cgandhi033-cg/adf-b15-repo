@@ -1,0 +1,21 @@
+{
+	"name": "adf-trainb15-dev",
+	"properties": {
+		"globalParameters": {
+			"container": {
+				"type": "string",
+				"value": "adlsgen2container"
+			},
+			"filepath": {
+				"type": "string",
+				"value": "target"
+			}
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "85de1078-72a2-4cdd-b4f5-9fad6df06972",
+		"tenantId": "d1e96943-dbf9-485f-9aba-ca48ca690976"
+	}
+}

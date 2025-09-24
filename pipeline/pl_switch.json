@@ -1,0 +1,90 @@
+{
+	"name": "pl_switch",
+	"properties": {
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@pipeline().parameters.inputvalue",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "Finance",
+							"activities": [
+								{
+									"name": "Finance",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_getmetadata",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "Sales",
+							"activities": [
+								{
+									"name": "sales",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "pl_getmetadata",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						}
+					],
+					"defaultActivities": [
+						{
+							"name": "Fail1",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "Swich pipeline failed",
+								"errorCode": "402"
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"inputvalue": {
+				"type": "string",
+				"defaultValue": "Finance"
+			}
+		},
+		"variables": {
+			"inputfilename": {
+				"type": "String",
+				"defaultValue": "Finance"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-11T20:33:19Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
