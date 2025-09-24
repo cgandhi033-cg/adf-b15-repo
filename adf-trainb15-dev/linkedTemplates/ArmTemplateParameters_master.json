@@ -1,0 +1,102 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-trainb15-dev"
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"ds_sql_custom_load_password": {
+			"value": ""
+		},
+		"ls_adls_source_accountKey": {
+			"value": ""
+		},
+		"ls_source_sql_database_password": {
+			"value": ""
+		},
+		"ls_source_sql_database_new_password": {
+			"value": ""
+		},
+		"ls_sql_old_watermark_password": {
+			"value": ""
+		},
+		"ls_target_db_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sqlserverrb16dev.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "AzureDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "chetangandhi"
+		},
+		"ds_sql_custom_load_properties_typeProperties_server": {
+			"value": "sqlserverrb16dev.database.windows.net"
+		},
+		"ds_sql_custom_load_properties_typeProperties_database": {
+			"value": "AzureDB"
+		},
+		"ds_sql_custom_load_properties_typeProperties_userName": {
+			"value": "chetangandhi"
+		},
+		"ls_adls_source_properties_typeProperties_url": {
+			"value": "https://adlsgenn2b15.dfs.core.windows.net"
+		},
+		"ls_restapi_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"ls_source_sql_database_properties_typeProperties_server": {
+			"value": "sqlserverrb15dev.database.windows.net"
+		},
+		"ls_source_sql_database_properties_typeProperties_database": {
+			"value": "sqldbdev"
+		},
+		"ls_source_sql_database_properties_typeProperties_userName": {
+			"value": "chetangandhi"
+		},
+		"ls_source_sql_database_new_properties_typeProperties_server": {
+			"value": "sqlserverrb16dev.database.windows.net"
+		},
+		"ls_source_sql_database_new_properties_typeProperties_database": {
+			"value": "AZUREDB"
+		},
+		"ls_source_sql_database_new_properties_typeProperties_userName": {
+			"value": "chetangandhi"
+		},
+		"ls_sql_old_watermark_properties_typeProperties_server": {
+			"value": "sqlserverrb16dev.database.windows.net"
+		},
+		"ls_sql_old_watermark_properties_typeProperties_database": {
+			"value": "AZUREDB"
+		},
+		"ls_sql_old_watermark_properties_typeProperties_userName": {
+			"value": "chetangandhi"
+		},
+		"ls_target_db_properties_typeProperties_server": {
+			"value": "sqlserverrb16dev.database.windows.net"
+		},
+		"ls_target_db_properties_typeProperties_database": {
+			"value": "Azuredbtarget"
+		},
+		"ls_target_db_properties_typeProperties_userName": {
+			"value": "chetangandhi"
+		},
+		"Tumbling_Window_properties_pipeline_parameters_Startdate": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"Tumbling_Window_properties_pipeline_parameters_Enddate": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
