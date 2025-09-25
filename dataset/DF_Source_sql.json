@@ -1,0 +1,35 @@
+{
+	"name": "DF_Source_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_source_sql_database_new",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "detail_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "emp_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "address",
+				"type": "varchar"
+			},
+			{
+				"name": "dob",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "empdetails"
+		}
+	}
+}

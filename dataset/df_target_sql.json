@@ -1,0 +1,43 @@
+{
+	"name": "df_target_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_target_db",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "emp_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "emp_name",
+				"type": "varchar"
+			},
+			{
+				"name": "department",
+				"type": "varchar"
+			},
+			{
+				"name": "detail_id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "address",
+				"type": "varchar"
+			},
+			{
+				"name": "dob",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TargetTable_AllColumns"
+		}
+	}
+}
