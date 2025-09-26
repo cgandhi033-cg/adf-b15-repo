@@ -61,7 +61,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"join1 filter(ERROR_FUNCTION('department=__SINGLE_QUOTE__IT__SINGLE_QUOTE__')) ~> filter1",
+				"join1 filter(department=='IT') ~> filter1",
 				"filter1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
