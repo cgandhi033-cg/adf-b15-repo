@@ -1,0 +1,12 @@
+{
+	"name": "adf-b15-deev",
+	"properties": {
+		"globalParameters": {
+			"ADLS_Prefix": {
+				"type": "string",
+				"value": "abfs://adlsgen2container@adlsgen2b15.dfs.core.window.net"
+			}
+		}
+	},
+	"location": "eastus"
+}
