@@ -4,7 +4,7 @@
 		"globalParameters": {
 			"ADLS_Prefix": {
 				"type": "string",
-				"value": "abfs://adlsgen2container@adlsgen2b15.dfs.core.windows.net"
+				"value": "abfss://adlsgen2container@adlmystoragegen2.dfs.core.windows.net"
 			}
 		}
 	},
