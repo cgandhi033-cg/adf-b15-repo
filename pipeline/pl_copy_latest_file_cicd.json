@@ -1,5 +1,5 @@
 {
-	"name": "pl_copy__csvfile_wildcard",
+	"name": "pl_copy_latest_file_cicd",
 	"properties": {
 		"activities": [
 			{
@@ -20,8 +20,14 @@
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "source",
-							"wildcardFileName": "*",
+							"modifiedDatetimeStart": {
+								"value": "@addDays(utcNow(), -2)",
+								"type": "Expression"
+							},
+							"modifiedDatetimeEnd": {
+								"value": "@utcNow()",
+								"type": "Expression"
+							},
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -31,8 +37,7 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": "PreserveHierarchy"
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -52,20 +57,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_source_wildcard_copy_file",
+						"referenceName": "ds_source_copy_last2hours_file",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "ds_target_wildcard_copy_file",
+						"referenceName": "ds_target_copy_last_2hoursfiles",
 						"type": "DatasetReference"
 					}
 				]
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2025-08-30T16:48:07Z"
+		"lastPublishTime": "2025-09-09T20:50:33Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }
