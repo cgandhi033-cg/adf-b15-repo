@@ -1,0 +1,86 @@
+{
+	"name": "DF_transformation",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable4",
+						"type": "DatasetReference"
+					},
+					"name": "source1sql"
+				},
+				{
+					"dataset": {
+						"referenceName": "DF_Source_sql",
+						"type": "DatasetReference"
+					},
+					"name": "source2sql"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "df_target_sql",
+						"type": "DatasetReference"
+					},
+					"name": "dftargetsql"
+				}
+			],
+			"transformations": [
+				{
+					"name": "join1"
+				},
+				{
+					"name": "filter1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          emp_id as integer,",
+				"          emp_name as string,",
+				"          department as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source1sql",
+				"source(output(",
+				"          detail_id as integer,",
+				"          emp_id as integer,",
+				"          address as string,",
+				"          dob as date",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> source2sql",
+				"source1sql, source2sql join(source1sql@emp_id == source2sql@emp_id,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 filter(department=='IT') ~> filter1",
+				"filter1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          emp_id as integer,",
+				"          emp_name as string,",
+				"          department as string,",
+				"          detail_id as integer,",
+				"          address as string,",
+				"          dob as date",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> dftargetsql"
+			]
+		}
+	}
+}
